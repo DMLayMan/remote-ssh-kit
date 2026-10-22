@@ -1,0 +1,29 @@
+name: Privacy and release checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  privacy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Inspect current files and complete fetched history
+        run: |
+          node scripts/privacy-check.mjs --worktree
+          node scripts/privacy-check.mjs --history
+      - name: Exercise privacy checks
+        run: node --test tests/privacy-check.test.mjs
+      - name: Build and inspect final release ZIP
+        run: |
+          node scripts/build-release.mjs
+          node scripts/privacy-check.mjs --archive dist/remote-ssh-kit-v0.4.0-rc.3.zip
+          bash scripts/check-secrets.sh dist

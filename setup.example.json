@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "jumpHost": "vps.example.com",
+  "jumpPort": 22,
+  "jumpTailnetIp": "100.80.0.1",
+  "jumpHostKey": "ssh-ed25519 REPLACE_WITH_TRUSTED_PUBLIC_KEY",
+  "clientPublicKey": "ssh-ed25519 REPLACE_WITH_CLIENT_PUBLIC_KEY"
+}

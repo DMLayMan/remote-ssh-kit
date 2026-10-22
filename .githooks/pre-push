@@ -1,0 +1,4 @@
+#!/bin/sh
+set -eu
+node scripts/privacy-check.mjs --history
+bash scripts/check-secrets.sh

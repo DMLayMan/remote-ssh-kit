@@ -1,0 +1,3 @@
+#!/bin/bash
+set -euo pipefail
+exec /bin/bash "$HOME/Library/Application Support/RemoteSSHClient/bin/start-mac-client.sh" "$@"

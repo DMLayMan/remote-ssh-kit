@@ -1,0 +1,7 @@
+*.sh text eol=lf
+*.command text eol=lf
+scripts/remote-ssh text eol=lf
+*.ps1 text eol=lf
+*.mjs text eol=lf
+*.md text eol=lf
+*.json text eol=lf
